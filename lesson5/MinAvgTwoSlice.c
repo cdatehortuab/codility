@@ -23,7 +23,7 @@ int solution(int A[], int N) {
         acumSum[i + 1] = acumSum[i] + A[i];
         acumPreAvg[i + 1] = ((double) acumSum[i + 1]) / (i + 1);
         acumPosSum += A[N - i - 1];
-        acumPosAvg[N - i - 1] += ((double) acumPosSum) / (i + 1);
+        acumPosAvg[N - i - 1] = ((double) acumPosSum) / (i + 1);
     }
 
     // printf("\n acumSum: ");
@@ -41,7 +41,7 @@ int solution(int A[], int N) {
     //     printf("    %f", acumPosAvg[i]);
     // }
 
-    for (i = 1; i < N + 1; i++) {
+    for (i = 1; i < N; i++) {
         aux = acumPreAvg[i];
         if (aux < minAvgAux) {
             minAvgAux = aux;
@@ -62,7 +62,7 @@ int solution(int A[], int N) {
     }
 
     minAvgAux = DBL_MAX;
-    for (i = 0; i < N; i++) {
+    for (i = 0; i < N - 1; i++) {
         aux = acumPosAvg[i];
         if (aux < minAvgAux) {
             minAvgAux = aux;
